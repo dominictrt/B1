@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5115bdd445a49303c64f4ea341f57133",
+    "content-hash": "7f0c9833ec1f20486900ba5f023f709b",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -391,6 +391,46 @@
             "time": "2018-04-03T12:24:41+00:00"
         },
         {
+            "name": "dixonsatit/yii2-thai-year-formatter",
+            "version": "0.9.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dixonsatit/yii2-thai-year-formatter.git",
+                "reference": "35667e16b4d544b3dcc65b987ef1ee6c1f38cf97"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dixonsatit/yii2-thai-year-formatter/zipball/35667e16b4d544b3dcc65b987ef1ee6c1f38cf97",
+                "reference": "35667e16b4d544b3dcc65b987ef1ee6c1f38cf97",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dixonsatit\\thaiYearFormatter\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "satit seethaphon",
+                    "email": "dixonsatit@gmail.com"
+                }
+            ],
+            "description": "Convert Year to Thai Buddhist Era Year",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2015-07-02T02:38:03+00:00"
+        },
+        {
             "name": "doctrine/lexer",
             "version": "1.2.0",
             "source": {
@@ -670,16 +710,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.133",
+            "version": "v0.134",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "dd53c4a23a5c4d868e409585e30ab31da278b5d2"
+                "reference": "4237f6725a48761701101e26e4575ddb053b5d80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/dd53c4a23a5c4d868e409585e30ab31da278b5d2",
-                "reference": "dd53c4a23a5c4d868e409585e30ab31da278b5d2",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/4237f6725a48761701101e26e4575ddb053b5d80",
+                "reference": "4237f6725a48761701101e26e4575ddb053b5d80",
                 "shasum": ""
             },
             "require": {
@@ -703,7 +743,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2020-05-03T00:24:28+00:00"
+            "time": "2020-05-10T00:25:08+00:00"
         },
         {
             "name": "google/auth",
@@ -1228,16 +1268,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-select2",
-            "version": "v2.1.7",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "b8cdb76b8dcc363e1e25b8f04f69aeabe98c6be3"
+                "reference": "ffe1a245fb73fc4f4add741ca3bc8657e0976c12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/b8cdb76b8dcc363e1e25b8f04f69aeabe98c6be3",
-                "reference": "b8cdb76b8dcc363e1e25b8f04f69aeabe98c6be3",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/ffe1a245fb73fc4f4add741ca3bc8657e0976c12",
+                "reference": "ffe1a245fb73fc4f4add741ca3bc8657e0976c12",
                 "shasum": ""
             },
             "require": {
@@ -1278,7 +1318,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2019-11-15T16:16:16+00:00"
+            "time": "2020-02-04T11:59:36+00:00"
         },
         {
             "name": "league/flysystem",
@@ -6078,7 +6118,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kartik-v/yii2-grid": 20,
-        "dektrium/yii2-rbac": 20
+        "dektrium/yii2-rbac": 20,
+        "kartik-v/yii2-widget-select2": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -5,8 +5,6 @@ use yii\helpers\Html;
 $this->title = 'English B1';
 ?>
 
-
-<h1>Dev</h1>
 <div class="row">
     <div class="col-lg-6 col-md-12 col-sm-12">
         <h1>ความเป็นมา</h1>

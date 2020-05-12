@@ -14,6 +14,9 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'modules' => [
+        'usermanager' => [
+            'class' => 'app\modules\usermanager\Usermanager',
+        ],
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableUnconfirmedLogin' => true,
@@ -32,6 +35,9 @@ $config = [
 
     ],
     'components' => [
+        'thaiFormatter'=>[
+            'class'=>'dixonsatit\thaiYearFormatter\ThaiYearFormatter',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'igjkygtiuty',
@@ -110,14 +116,13 @@ $config = [
         ]
     ],
 
-    'as access' => [
-        'class' => 'mdm\admin\components\AccessControl',
-        'allowActions' => [
-            '*',
-           '/user/security/logout',
-           '/admin*'
-        ]
-    ],
+    // 'as access' => [
+    //     'class' => 'mdm\admin\components\AccessControl',
+    //     'allowActions' => [
+    //         'site/index',
+    //        'user/security/logout',
+    //     ]
+    // ],
     'params' => $params,
 ];
 

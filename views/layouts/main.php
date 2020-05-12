@@ -19,9 +19,14 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
     <?php $this->head() ?>
 </head>
-
+<style>
+body{
+    font-family: 'Kanit', sans-serif;
+}
+</style>
 <body>
     <?php $this->beginBody() ?>
     <?php  echo $this->render('navbar');?>
@@ -60,6 +65,7 @@ AppAsset::register($this);
     </div>
     <?php endif; ?>
     <div class="container mt-5">
+    <br>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>

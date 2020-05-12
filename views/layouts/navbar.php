@@ -20,7 +20,7 @@ use yii\bootstrap4\NavBar;
 
    } else {
        $menuItems[] = '<li>'
-           . Html::beginForm(['/site/logout'], 'post')
+           . Html::beginForm(['/user/security/logout'], 'post')
            . Html::submitButton(
                '<i class="fas fa-power-off"></i> Logout (' . Yii::$app->user->identity->username . ')',
                ['class' => 'btn btn-danger logout']

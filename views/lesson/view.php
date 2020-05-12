@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="lesson-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+<?php if(Yii::$app->user->can('admin')):?>
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->lesson_id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->lesson_id], [
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+        <?php endif;?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -37,5 +37,5 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
         ],
     ]) ?>
-
+<?=Html::a('ทำเเบบทดสอบ',['examples'],['class' =>'btn btn-primary'])?>
 </div>

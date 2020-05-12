@@ -109,6 +109,12 @@ class LessonController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionExamples()
+    {
+         return $this->render('examples');
+
+    }
+
     /**
      * Finds the Lesson model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

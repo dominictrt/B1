@@ -6,13 +6,15 @@ use kartik\grid\GridView;
 
 $this->title = 'Lessons';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
+
 <div class="lesson-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Lesson', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Yii::$app->user->can('admin') ? Html::a('Create Lesson', ['create'], ['class' => 'btn btn-success']) : null; ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -33,7 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
             
             //'username',
 
-            ['class' => 'kartik\grid\ActionColumn'],
+             [
+                 'header' => 'ดำเนินการ',
+                 'width' => '120px',
+                 'class' => 'kartik\grid\ActionColumn',
+                'template' => Yii::$app->user->can('admin') ? '{view} {update} {delete}' : ' {view} ',
+                ],
         ],
     ]); ?>
 
