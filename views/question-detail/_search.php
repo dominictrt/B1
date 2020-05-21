@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\LessonSearch */
+/* @var $model app\models\QuestionDetailSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="lesson-search">
+<div class="question-detail-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -18,19 +18,21 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'q_id') ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'qu_id') ?>
 
-    <?= $form->field($model, 'content') ?>
+    <?= $form->field($model, 'qu_detail') ?>
 
-    <?= $form->field($model, 'created_at') ?>
+    <?= $form->field($model, 'ans1') ?>
 
-    <?= $form->field($model, 'updated_at') ?>
+    <?= $form->field($model, 'ans2') ?>
 
-    <?php // echo $form->field($model, 'created_by') ?>
+    <?php // echo $form->field($model, 'ans3') ?>
 
-    <?php // echo $form->field($model, 'updated_by') ?>
+    <?php // echo $form->field($model, 'ans4') ?>
+
+    <?php // echo $form->field($model, 'ans_correct') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

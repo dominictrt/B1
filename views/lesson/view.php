@@ -3,10 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Lesson */
-
-$this->title = $model->lesson_id;
+$this->title = $model->title;
+use app\models\ExamSet;
 $this->params['breadcrumbs'][] = ['label' => 'Lessons', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -14,10 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="lesson-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-<?php if(Yii::$app->user->can('admin')):?>
+
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->lesson_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->lesson_id], [
+        <?= Html::a('แก้ไข', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('สร้างชุดคำถาม', ['/exam-set/create', 'lesson_id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -25,17 +24,33 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-        <?php endif;?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'lesson_id',
-            'lesson_date',
-            'lesson_name',
-            'lesson_detail:html',
-            'lesson_file',
-            'username',
+            'title',
+            'content:html',
         ],
     ]) ?>
-<?=Html::a('ทำเเบบทดสอบ',['examples'],['class' =>'btn btn-primary'])?>
 </div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>ชื่อชุดเเบบทดสอบ</th>
+            <th>ดำเนินการ</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach (ExamSet::find()->where(['lesson_id' => $model->id])->all() as $item): ?>
+        <tr>
+            <td scope="row"><?=$item->id?></td>
+            <td><?=$item->name?></td>
+            <td>
+            <?=Html::a('<i class="far fa-edit"></i>',['/question','lesson_id' => $model->id,'exam_set_id' => $item->id],['class' => 'btn btn-sm btn-info'])?>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

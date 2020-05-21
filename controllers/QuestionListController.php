@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Lesson;
-use app\models\LessonSearch;
+use app\models\QuestionList;
+use app\models\QuestionListSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LessonController implements the CRUD actions for Lesson model.
+ * QuestionListController implements the CRUD actions for QuestionList model.
  */
-class LessonController extends Controller
+class QuestionListController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class LessonController extends Controller
     }
 
     /**
-     * Lists all Lesson models.
+     * Lists all QuestionList models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new LessonSearch();
+        $searchModel = new QuestionListSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class LessonController extends Controller
     }
 
     /**
-     * Displays a single Lesson model.
+     * Displays a single QuestionList model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,16 +58,22 @@ class LessonController extends Controller
     }
 
     /**
-     * Creates a new Lesson model.
+     * Creates a new QuestionList model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate(int $lesson_id,int $question_id,int $exam_set_id)
     {
-        $model = new Lesson();
+        $model = new QuestionList(
+            [
+                'lesson_id' => $lesson_id,
+                'question_id'=> $question_id,
+                'exam_set_id'=> $exam_set_id
+            ]
+        );
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+            return $this->redirect(['/question/view', 'id' => $model->question_id]);
         }
 
         return $this->render('create', [
@@ -76,7 +82,7 @@ class LessonController extends Controller
     }
 
     /**
-     * Updates an existing Lesson model.
+     * Updates an existing QuestionList model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +93,8 @@ class LessonController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['/question/view', 'id' => $model->question_id]);
+
         }
 
         return $this->render('update', [
@@ -96,7 +103,7 @@ class LessonController extends Controller
     }
 
     /**
-     * Deletes an existing Lesson model.
+     * Deletes an existing QuestionList model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +117,15 @@ class LessonController extends Controller
     }
 
     /**
-     * Finds the Lesson model based on its primary key value.
+     * Finds the QuestionList model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Lesson the loaded model
+     * @return QuestionList the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Lesson::findOne($id)) !== null) {
+        if (($model = QuestionList::findOne($id)) !== null) {
             return $model;
         }
 

@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Lesson;
+use app\models\QuestionDetail;
 
 /**
- * LessonSearch represents the model behind the search form of `app\models\Lesson`.
+ * QuestionDetailSearch represents the model behind the search form of `app\models\QuestionDetail`.
  */
-class LessonSearch extends Lesson
+class QuestionDetailSearch extends QuestionDetail
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class LessonSearch extends Lesson
     public function rules()
     {
         return [
-            [['id', 'created_by', 'updated_by'], 'integer'],
-            [['title', 'content', 'created_at', 'updated_at'], 'safe'],
+            [['q_id'], 'integer'],
+            [['qu_id', 'qu_detail', 'ans1', 'ans2', 'ans3', 'ans4', 'ans_correct'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class LessonSearch extends Lesson
      */
     public function search($params)
     {
-        $query = Lesson::find();
+        $query = QuestionDetail::find();
 
         // add conditions that should always apply here
 
@@ -58,15 +58,16 @@ class LessonSearch extends Lesson
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'created_by' => $this->created_by,
-            'updated_by' => $this->updated_by,
+            'q_id' => $this->q_id,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content]);
+        $query->andFilterWhere(['like', 'qu_id', $this->qu_id])
+            ->andFilterWhere(['like', 'qu_detail', $this->qu_detail])
+            ->andFilterWhere(['like', 'ans1', $this->ans1])
+            ->andFilterWhere(['like', 'ans2', $this->ans2])
+            ->andFilterWhere(['like', 'ans3', $this->ans3])
+            ->andFilterWhere(['like', 'ans4', $this->ans4])
+            ->andFilterWhere(['like', 'ans_correct', $this->ans_correct]);
 
         return $dataProvider;
     }

@@ -15,18 +15,12 @@ use yii\web\JsExpression;
 <div class="lesson-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'lesson_date')->textInput() ?>
-
-    <?= $form->field($model, 'lesson_name')->textInput(['maxlength' => true]) ?>
-
-    <?=$form->field($model, 'lesson_detail')->widget(CKEditor::className(),[
+    <?=$form->field($model, 'content')->widget(CKEditor::className(),[
     'editorOptions' => ElFinder::ckeditorOptions('elfinder',[/* Some CKEditor Options */]),
 ]);?>
 
-    <?= $form->field($model, 'lesson_file')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

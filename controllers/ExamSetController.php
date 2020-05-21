@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Lesson;
-use app\models\LessonSearch;
+use app\models\ExamSet;
+use app\models\ExamSetSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LessonController implements the CRUD actions for Lesson model.
+ * ExamSetController implements the CRUD actions for ExamSet model.
  */
-class LessonController extends Controller
+class ExamSetController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class LessonController extends Controller
     }
 
     /**
-     * Lists all Lesson models.
+     * Lists all ExamSet models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new LessonSearch();
+        $searchModel = new ExamSetSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class LessonController extends Controller
     }
 
     /**
-     * Displays a single Lesson model.
+     * Displays a single ExamSet model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,16 +58,18 @@ class LessonController extends Controller
     }
 
     /**
-     * Creates a new Lesson model.
+     * Creates a new ExamSet model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate(int $lesson_id)
     {
-        $model = new Lesson();
+        $model = new ExamSet([
+            'lesson_id' => $lesson_id
+        ]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+            return $this->redirect(['/lesson/view', 'id' => $model->lesson_id]);
         }
 
         return $this->render('create', [
@@ -76,7 +78,7 @@ class LessonController extends Controller
     }
 
     /**
-     * Updates an existing Lesson model.
+     * Updates an existing ExamSet model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +98,7 @@ class LessonController extends Controller
     }
 
     /**
-     * Deletes an existing Lesson model.
+     * Deletes an existing ExamSet model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +112,15 @@ class LessonController extends Controller
     }
 
     /**
-     * Finds the Lesson model based on its primary key value.
+     * Finds the ExamSet model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Lesson the loaded model
+     * @return ExamSet the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Lesson::findOne($id)) !== null) {
+        if (($model = ExamSet::findOne($id)) !== null) {
             return $model;
         }
 

@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Lesson;
+use app\models\ExamSet;
 
 /**
- * LessonSearch represents the model behind the search form of `app\models\Lesson`.
+ * ExamSetSearch represents the model behind the search form of `app\models\ExamSet`.
  */
-class LessonSearch extends Lesson
+class ExamSetSearch extends ExamSet
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class LessonSearch extends Lesson
     public function rules()
     {
         return [
-            [['id', 'created_by', 'updated_by'], 'integer'],
-            [['title', 'content', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'lesson_id', 'created_by', 'updated_by'], 'integer'],
+            [['created_at', 'updated_at', 'name'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class LessonSearch extends Lesson
      */
     public function search($params)
     {
-        $query = Lesson::find();
+        $query = ExamSet::find();
 
         // add conditions that should always apply here
 
@@ -59,14 +59,14 @@ class LessonSearch extends Lesson
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'lesson_id' => $this->lesson_id,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

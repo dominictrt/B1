@@ -4,7 +4,7 @@ use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
-use yii\widgets\Breadcrumbs;
+use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -66,16 +66,21 @@ body{
     <?php endif; ?>
     <div class="container mt-5">
     <br>
+    <?php echo  Breadcrumbs::widget(
+        []
+            // 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
     <style>
     .footer {
-
+        padding: 2px;
         width: 100%;
         background-color: gray;
         color: white;
         text-align: center;
+        
     }
     </style>
     <footer>

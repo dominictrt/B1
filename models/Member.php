@@ -17,7 +17,7 @@ use Yii;
  * @property string $member_status
  * @property string $member_date
  */
-class Member extends \yii\db\ActiveRecord
+class Member extends app\models\Config
 {
     /**
      * {@inheritdoc}
