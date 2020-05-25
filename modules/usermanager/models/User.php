@@ -69,7 +69,7 @@ class User extends ActiveRecord implements IdentityInterface
                  ['confirm_password', 'string', 'min' => 6],
                  ['confirm_password', 'compare','compareAttribute'=>'password'],
 
-                 [['roles','doctor_id','fullname','q','branch_id'], 'safe']
+                 [['roles','doctor_id','fullname','q'], 'safe']
 
              ];
          }
@@ -82,8 +82,7 @@ class User extends ActiveRecord implements IdentityInterface
                  'fullname' => 'ชื่อ-สกุล',
                  'username' => 'ชื่อเข้าใช้งาน',
                  'password' => 'รหัสผ่าน',
-                 'confirm_password' => 'ยืนยันรหัสผ่าน',
-                 'branch_id' =>'สาขา'
+                 'confirm_password' => 'ยืนยันรหัสผ่าน'
              ];
             }
     /**
@@ -99,16 +98,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        // throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
-        // foreach (self::$users as $user) {
-        //     if ($user['id'] === (string) $token->getClaim('uid')) {
-        //         return new static($user);
-        //     }
-        // }
-        return static::findOne(['auth_key' => $token->getClaim('uid')]);
-        // return static::findOne(1);
-        // return null;
-
+        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
 
     /**
@@ -120,7 +110,6 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
-        // return static::findOne(['username' => $username]);
     }
 
     /**

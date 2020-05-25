@@ -31,7 +31,10 @@ $config = [
         ],
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
-        ]
+        ],
+        'noty' => [
+            'class' => 'lo\modules\noty\Module',
+        ],
 
     ],
     'components' => [

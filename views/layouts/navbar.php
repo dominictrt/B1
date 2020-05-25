@@ -13,6 +13,7 @@ use yii\bootstrap4\NavBar;
    $menuItems = [
        ['label' => '<i class="fas fa-house-user"></i> หน้าเเรก', 'url' => ['/site']],
        ['label' => '<i class="fas fa-book-open"></i> บทเรียน', 'url' => ['/lesson']],
+       ['label' => '<i class="fas fa-user-tag"></i> ข้อมูลส่วนตัว', 'url' => ['/profile']],
       
    ];
    if (Yii::$app->user->isGuest) {

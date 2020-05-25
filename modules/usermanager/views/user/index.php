@@ -12,11 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 #user-grid table thead {
     background-color: #fff;
 }
-
-#user-grid-container {
-    height: 480px;
+#user-grid-container{
+  height:480px;
 }
 </style>
+<?=$this->render('..//default/navlink');?>
 <?php
 $layout = <<< HTML
 <div class="clearfix"></div>
@@ -48,8 +48,6 @@ $layout = <<< HTML
 HTML;
 
 ?>
-
-
 <?= GridView::widget([
   'id' => 'user-grid',
   'dataProvider' => $dataProvider,
@@ -109,12 +107,11 @@ HTML;
       }
     ],
     [
-      'class' => 'kartik\grid\ActionColumn',
+      'class' => 'app\modules\usermanager\grid\ActionColumn',
       'header' => '<center>ดำเนินการ<center>',
       'width' => '130px',
       'dropdown' => false,
       'vAlign' => 'middle',
-   
     ],
 
   ],

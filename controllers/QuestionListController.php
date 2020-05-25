@@ -8,7 +8,7 @@ use app\models\QuestionListSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\Response;
 /**
  * QuestionListController implements the CRUD actions for QuestionList model.
  */
@@ -76,9 +76,22 @@ class QuestionListController extends Controller
             return $this->redirect(['/question/view', 'id' => $model->question_id]);
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if (Yii::$app->request->isAjax){
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return[
+                'title' => $model->question->title,
+                'content' =>$this->renderAjax('create', [
+                    'model' => $model,
+                ]),
+                'footer' => 'footre'
+            ];
+             
+        }else{
+
+            return $this->render('create', [
+                'model' => $model,
+                ]);
+            }
     }
 
     /**

@@ -48,7 +48,18 @@ $this->params['breadcrumbs'][] = $this->title;
             <td scope="row"><?=$item->id?></td>
             <td><?=$item->name?></td>
             <td>
-            <?=Html::a('<i class="far fa-edit"></i>',['/question','lesson_id' => $model->id,'exam_set_id' => $item->id],['class' => 'btn btn-sm btn-info'])?>
+            <?=Html::a('<i class="far fa-edit"></i>',['/question',
+            'lesson_id' => $model->id,
+            'exam_set_id' => $item->id,
+            'question_id' => $item->id
+            ],['class' => 'btn btn-sm btn-info'])?>
+            <?=Html::a('ทำเเบบทดสอบ',['/examples/list',
+            'lesson_id' => $item->lesson_id,
+            'exam_set_id' => $item->id,
+            'question_id' => $item->id,
+
+        ],
+            ['class' => 'btn btn-sm btn-info'])?>
             </td>
         </tr>
         <?php endforeach; ?>

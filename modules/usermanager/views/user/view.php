@@ -6,53 +6,36 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\modules\usermanager\models\User */
 
-$this->title = $model->fullname;
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="user-view">
+<?=$this->render('../default/navlink');?>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+<div class="card">
+    <div class="card-header">
+    <h2 class="card-title"><i class="fas fa-list-ul"></i>  <?= $model->fullname;?></h2>
+        <div class="card-tools">
+        <p style="margin-bottom: 0px;">
+        <?= Html::a('<i class="far fa-edit"></i> แก้ไข', ['update', 'id' => $model->id], ['class' => 'btn btn-primary link-loading']); ?>
+            <?= Html::a('<i class="fas fa-trash"></i> ลบทิ้ง', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data-confirm' => Yii::t('rbac-admin', 'Are you sure to delete this item?'),
+                'data-method' => 'post',
+            ]); ?>
     </p>
-
+        </div>
+    </div>
+    <div class="card-body">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'username',
             'email:email',
-            'password_hash',
-            'auth_key',
-            'confirmed_at',
-            'unconfirmed_email:email',
-            'blocked_at',
-            'registration_ip',
-            'created_at',
-            'updated_at',
-            'flags',
-            'last_login_at',
-            'status',
-            'password_reset_token',
             'pname',
             'fullname',
-            'dep_id',
-            'occ_id',
-            'occ_no',
-            'pos_id',
-            'pos_no',
-            'role',
         ],
     ]) ?>
-
+    </div>
 </div>
+

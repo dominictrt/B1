@@ -7,9 +7,6 @@ $this->params['breadcrumbs'][] = ['label' =>$model->lesson->title, 'url' => ['in
 $this->params['breadcrumbs'][] = ['label' => $model->examSet->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = $model->question->title;
 ?>
-<h3>บทเรียน : <?=$model->lesson->title;?></h3>
-<h3>ชุดข้อสอบ : <?=$model->examSet->name;?></h3>
-<h3>คำถาม : <?=$model->question->title;?></h3>
 <div class="question-list-form">
 
     <?php $form = ActiveForm::begin(); ?>

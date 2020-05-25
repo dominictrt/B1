@@ -23,10 +23,11 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <style>
-body{
+body {
     font-family: 'Kanit', sans-serif;
 }
 </style>
+
 <body>
     <?php $this->beginBody() ?>
     <?php  echo $this->render('navbar');?>
@@ -65,22 +66,39 @@ body{
     </div>
     <?php endif; ?>
     <div class="container mt-5">
-    <br>
-    <?php echo  Breadcrumbs::widget(
+        <br>
+        <?php echo  Breadcrumbs::widget(
         []
             // 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
+        <div id="element" class="toast " role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000"
+            data-autohide="true" style="position: absolute;top: 71px;right: 10px;">
+            <div class="toast-header bg-success text-white">
+                <!-- <img src="..." class="rounded mr-2" alt="..."> -->
+                <strong class="mr-auto"><i class="fas fa-check"></i> บันทึกสำเร็จ</strong>
+
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+
+
     </div>
     <style>
     .footer {
         padding: 2px;
         width: 100%;
-        background-color: gray;
+        background-color: #6c757d;
         color: white;
         text-align: center;
-        
+        position: fixed;
+        bottom: 0px;
     }
     </style>
     <footer>

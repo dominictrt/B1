@@ -33,17 +33,18 @@ class QuestionController extends Controller
      * Lists all Question models.
      * @return mixed
      */
-    public function actionIndex(int $lesson_id,int $exam_set_id)
+    public function actionIndex(int $lesson_id,int $exam_set_id,int $question_id)
     {
         $searchModel = new QuestionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->where(['exam_set_id' => $exam_set_id]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            // 'id' => $id,
             'lesson_id' => $lesson_id,
-            'exam_set_id' => $exam_set_id
+            'exam_set_id' => $exam_set_id,
+            'question_id' => $question_id
         ]);
     }
 

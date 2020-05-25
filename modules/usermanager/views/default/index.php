@@ -1,3 +1,7 @@
+<div class="usermanager-default-index">
+    <h2><i class="far fa-user"></i> ตั้งค่าผู้ใช้งานระบบ</h2>
+</div>
+
 <div class="show-user"></div>
 
 <?php
@@ -9,9 +13,12 @@ function loadUser(){
         type: "get",
         url: "index.php?r=usermanager/user",
         dataType: "json",
+        beforeSend:function(){
+            $('.loading-page').show();
+        },
         success: function (response) {
             $('.show-user').html(response);
-            // console.log(response);
+            $('.loading-page').hide();
         }
     });
 }

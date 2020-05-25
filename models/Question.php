@@ -66,4 +66,6 @@ class Question extends \app\models\Config
     {
         return $this->hasOne(ExamSet::className(), ['id' => 'exam_set_id']);
     }
+
+
 }

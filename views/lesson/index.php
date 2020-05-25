@@ -35,7 +35,16 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_by',
             //'updated_by',
 
-            ['class' => 'kartik\grid\ActionColumn'],
+            [
+                'class' => 'kartik\grid\ActionColumn',
+                'width' => '140px',
+                // 'template' => '{view} {update} {delete} {example}',
+                // 'buttons'=>[
+                //     'view' => function($url,$model,$key){
+                //         return Html::a('ทำเเบบทดสอบ',$url);
+                //       }
+                //     ]
+            ],
         ],
     ]); ?>
 
